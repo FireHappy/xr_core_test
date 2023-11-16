@@ -1,4 +1,5 @@
 #include "plane_tracking.h"
+#include "../include/unity_math.h"
 
 void startTracking()
 {
@@ -40,17 +41,18 @@ void setRequestedPlaneDetectionMode(PlaneDetectionMode &mode)
     std::cout << "setPlaneDetectionMode:";
 }
 
+static ARPlane arPlane;
 void *acquireBoundary(
     TrackableId trackableId,
     int numPoints)
 {
-    // ARPlane *plane = PlaneManager::getInstance().getPlaneByTrackableId(trackableId);
-    // if (plane != nullptr)
-    // {
-    //     numPoints = plane->boundary.size();
-    //     return plane->getNativePtr();
-    // }
-    return nullptr;
+    arPlane.trackableId = trackableId;
+    numPoints = 4;
+    arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
+    arPlane.boundary.push_back(Vector2(0.5f, 0.5f));
+    arPlane.boundary.push_back(Vector2(0.5f, -0.5f));
+    arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
+    return &arPlane;
 }
 
 bool tryCopyBoundary(

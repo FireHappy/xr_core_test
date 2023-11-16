@@ -17,5 +17,9 @@ target_include_directories(rokid_xr_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+add_executable(main main.cpp) # 添加执行程序
+
+target_link_libraries(main PRIVATE rokid_xr_core)
+
 set_target_properties(rokid_xr_core PROPERTIES OUTPUT_NAME "rokid_xr_core")
 set_target_properties(rokid_xr_core PROPERTIES LIBRARY_OUTPUT_DIRECTORY "/Users/chenlin/projects/UnityProjects/ARCoreDemo/Assets/Plugins/MacOS")

@@ -14,13 +14,13 @@ ARPlane *PlaneManager::getPlaneByTrackableId(TrackableId targetId)
 
 void PlaneManager::addOrUpdatePlane(ARPlane &plane)
 {
-    ARPlane *planePtr = getPlaneByTrackableId(plane.trackableId);
-    if (planePtr != nullptr)
-    {
-        // TODO Update Plane
-    }
-    else
-    {
-        planeList.push_front(plane);
-    }
+    // ARPlane *planePtr = getPlaneByTrackableId(plane.trackableId);
+    // if (planePtr != nullptr)
+    // {
+    //     // TODO Update Plane
+    // }
+    // else
+    // {
+    //     planeList.push_front(plane);
+    // }
 }
