@@ -1,6 +1,6 @@
-#include "rokid_xr_core_enum.h"
-#include "rokid_unity_math.h"
-#include "trackableId.h"
+#include "plane_tracking_enum.h"
+#include "unity_math.h"
+#include "trackable_id.h"
 
 #ifndef __BOUNDED_PLANE__H__
 #define __BOUNDED_PLANE__H__
