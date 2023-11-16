@@ -1,5 +1,8 @@
 
 #include "plane_tracking.h"
+#include "plane_manager.h"
+#include "plane_changes.h"
+// #include "../utils/unity_debug.h"
 #include <cstddef>
 #include <iostream>
 
@@ -29,7 +32,8 @@ void *acquireChanges(
 
 void releaseChanges(void *changes)
 {
-    std::cout << "releaseChanges";
+    PlaneChanges *planeChanges = static_cast<PlaneChanges *>(changes);
+    planeChanges->release();
 }
 
 PlaneDetectionMode getRequestedPlaneDetectionMode()
@@ -46,12 +50,24 @@ void *acquireBoundary(
     TrackableId trackableId,
     int numPoints)
 {
-    return NULL;
+    ARPlane *plane = PlaneManager::getInstance().getPlaneByTrackableId(trackableId);
+    if (plane != nullptr)
+    {
+        numPoints = plane->boundary.size();
+        return plane->getNativePtr();
+    }
+    return nullptr;
 }
 
 bool tryCopyBoundary(
     void *plane,
     void *boundaryOut)
 {
+    ARPlane *arplane = static_cast<ARPlane *>(plane);
+    if (arplane != nullptr)
+    {
+        boundaryOut = &(arplane->boundary);
+        return true;
+    }
     return false;
 }

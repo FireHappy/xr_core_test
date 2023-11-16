@@ -11,17 +11,17 @@
 class PlaneChanges
 {
 public:
-    BoundedPlane *GetAddBoundedPlane()
+    BoundedPlane *getAddBoundedPlane()
     {
         return addArray;
     }
 
-    BoundedPlane *GetRemoveBoundedPlane()
+    BoundedPlane *getRemoveBoundedPlane()
     {
         return removeArray;
     }
 
-    BoundedPlane *GetUpdateBoundedPlane()
+    BoundedPlane *getUpdateBoundedPlane()
     {
         return updateArray;
     }
@@ -38,7 +38,7 @@ public:
         }
     }
 
-    void Release()
+    void release()
     {
         delete[] addArray;
         delete[] removeArray;
