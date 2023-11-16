@@ -2,7 +2,11 @@
 #include <regex>
 #include <sstream>
 #include <iomanip>
-#include "trackableId.h"
+#include <cstddef>
+#include <iostream>
+#include "../include/trackableId.h"
+#include "../include/plane_manager.h"
+#include "../include/plane_changes.h"
 
 #ifndef __PLANE_TRACKING__H__
 #define __PLANE_TRACKING__H__

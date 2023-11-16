@@ -1,10 +1,4 @@
-
 #include "plane_tracking.h"
-#include "plane_manager.h"
-#include "plane_changes.h"
-// #include "../utils/unity_debug.h"
-#include <cstddef>
-#include <iostream>
 
 void startTracking()
 {
