@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(rokid_xr_core VERSION 0.1.0 LANGUAGES C CXX)
 
+# 启用C++11标准
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64") # 设置目标架构
+
 include(CTest)
 enable_testing()
 
@@ -12,5 +18,4 @@ target_include_directories(rokid_xr_core PUBLIC
 )
 
 set_target_properties(rokid_xr_core PROPERTIES OUTPUT_NAME "rokid_xr_core")
-set_target_properties(rokid_xr_core PROPERTIES LIBRARY_OUTPUT_DIRECTORY "/Users/chenlin/projects/UnityProjects/ARCoreDemo/Assets/com.rokid.xr.core/Runtime/MacOS")
-set(CMAKE_CXX_STANDARD 11) # 设置C++标准（可选）
+set_target_properties(rokid_xr_core PROPERTIES LIBRARY_OUTPUT_DIRECTORY "/Users/chenlin/projects/UnityProjects/ARCoreDemo/Assets/Plugins/MacOS")

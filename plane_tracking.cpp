@@ -44,12 +44,12 @@ void *acquireBoundary(
     TrackableId trackableId,
     int numPoints)
 {
-    ARPlane *plane = PlaneManager::getInstance().getPlaneByTrackableId(trackableId);
-    if (plane != nullptr)
-    {
-        numPoints = plane->boundary.size();
-        return plane->getNativePtr();
-    }
+    // ARPlane *plane = PlaneManager::getInstance().getPlaneByTrackableId(trackableId);
+    // if (plane != nullptr)
+    // {
+    //     numPoints = plane->boundary.size();
+    //     return plane->getNativePtr();
+    // }
     return nullptr;
 }
 

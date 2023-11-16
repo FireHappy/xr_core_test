@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iomanip>
 #include "bounded_plane.h"
-#include "rokid_unity_math.h";
+#include "rokid_unity_math.h"
 
 #ifndef __PLANE_CHANGES__H__
 #define __PLANE_CHANGES__H__
