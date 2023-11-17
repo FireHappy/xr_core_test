@@ -10,7 +10,7 @@
 struct ARPlane
 {
     TrackableId trackableId;
-    std::vector<Vector2> boundary;
+    Vector2 boundary[100];
     ARPlane() : trackableId(0, 0), boundary() {}
 
     ARPlane *getNativePtr()

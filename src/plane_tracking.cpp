@@ -1,6 +1,8 @@
 #include "../include/plane_tracking.h"
 #include "../include/unity_math.h"
 #include "../include/unity_debug.h"
+#include "../include/ar_plane.h"
+#include <string>
 
 void startTracking()
 {
@@ -40,29 +42,40 @@ void setRequestedPlaneDetectionMode(PlaneDetectionMode &mode)
     LogMessage("setPlaneDetectionMode");
 }
 
-static ARPlane arPlane;
+static ARPlane _arPlane;
 void *acquireBoundary(
     TrackableId trackableId,
     int &numPoints)
 {
-    arPlane.trackableId = trackableId;
+    // _arPlane.trackableId = trackableId;
     numPoints = 4;
-    arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
-    arPlane.boundary.push_back(Vector2(0.5f, 0.5f));
-    arPlane.boundary.push_back(Vector2(0.5f, -0.5f));
-    arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
-    return &arPlane;
+    for (size_t i = 0; i < numPoints; i++)
+    {
+        /* code */
+        _arPlane.boundary[i] = Vector2(-0.5f, 0.5f);
+    }
+    _arPlane.trackableId = trackableId;
+
+    std::ostringstream oss;
+    oss << "acquireBoundary: " << _arPlane.getNativePtr() << " result: "
+        << _arPlane.boundary[0].x << " boundary.address " << _arPlane.boundary << " trackableId: " << _arPlane.trackableId.subId1 << std::endl;
+    LogMessage(oss.str().c_str());
+    return &_arPlane;
 }
 
 bool tryCopyBoundary(
-    void *plane,
-    void *boundaryOut)
+    void *plane, void *boundaryOut)
 {
-    ARPlane *arplane = static_cast<ARPlane *>(plane);
-    if (arplane != nullptr)
+    std::ostringstream oss;
+    ARPlane *arPlane = static_cast<ARPlane *>(plane);
+    oss << "tryCopyBoundary: " << arPlane << " result: "
+        << arPlane->boundary[0].x << " boundary.address " << arPlane->boundary << " trackableId: " << arPlane->trackableId.subId1 << std::endl;
+    LogMessage(oss.str().c_str());
+    Vector2 *array = static_cast<Vector2 *>(boundaryOut);
+    for (size_t i = 0; i < 4; i++)
     {
-        boundaryOut = &(arplane->boundary);
-        return true;
+        array[i] = arPlane->boundary[i];
     }
-    return false;
+    std::cout << "hello world " << boundaryOut << "== " << arPlane->boundary << std::endl;
+    return true;
 }

@@ -62,15 +62,14 @@ extern "C"
     /// @return
     void *acquireBoundary(
         TrackableId trackableId,
-        int numPoints);
+        int &numPoints);
 
     /// @brief try copy boundary
     /// @param plane
     /// @param boundaryOut
     /// @return
     bool tryCopyBoundary(
-        void *plane,
-        void *boundaryOut);
+        void *plane, void *boundaryOut);
 }
 
 #endif //!__PLANE_TRACKING__H__
