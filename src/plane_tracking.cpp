@@ -2,6 +2,7 @@
 #include "../include/unity_math.h"
 #include "../include/unity_debug.h"
 #include "../include/ar_plane.h"
+#include "../include/plane_changes.h"
 #include <string>
 
 void startTracking()
@@ -30,6 +31,8 @@ void *acquireChanges(
 
 void releaseChanges(void *changes)
 {
+    PlaneChanges *planeChanges = static_cast<PlaneChanges *>(changes);
+    planeChanges->release();
 }
 
 PlaneDetectionMode getRequestedPlaneDetectionMode()

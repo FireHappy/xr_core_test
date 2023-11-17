@@ -8,44 +8,20 @@
 #include <sstream>
 #include <iomanip>
 #include "bounded_plane.h"
-#include "unity_math.h";
+#include "unity_math.h"
 
 class PlaneChanges
 {
 public:
-    BoundedPlane *getAddBoundedPlane()
-    {
-        return addArray;
-    }
+    BoundedPlane *getAddBoundedPlane();
 
-    BoundedPlane *getRemoveBoundedPlane()
-    {
-        return removeArray;
-    }
+    BoundedPlane *getRemoveBoundedPlane();
 
-    BoundedPlane *getUpdateBoundedPlane()
-    {
-        return updateArray;
-    }
+    BoundedPlane *getUpdateBoundedPlane();
 
-    void Initialize()
-    {
-        addArray = new BoundedPlane[10];
-        removeArray = new BoundedPlane[10];
-        for (size_t i = 0; i < 10; i++)
-        {
-            BoundedPlane plane = BoundedPlane(TrackableId(1, 2), TrackableId(1, 2), Pose(), Vector2(), Vector2(), PlaneAlignment::HorizontalUp, TrackingState::Tracking, &plane, PlaneClassification::Floor);
-            this->addArray[i] = plane;
-            this->updateArray[i] = plane;
-        }
-    }
+    void initialize();
 
-    void release()
-    {
-        delete[] addArray;
-        delete[] removeArray;
-        delete[] updateArray;
-    }
+    void release();
 
 private:
     BoundedPlane *addArray;
