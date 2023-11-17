@@ -4,17 +4,21 @@ project(rokid_xr_core VERSION 0.1.0 LANGUAGES C CXX)
 # 启用C++11标准
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_COMPILER "clang++")
 
-set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64") # 设置目标架构
+set(CMAKE_OSX_ARCHITECTURES "arm64") # 设置目标架构
 
 include(CTest)
 enable_testing()
 
-add_library(rokid_xr_core SHARED plane_tracking.cpp plane_tracking.h)
+file(GLOB HEADERS "include/*.h")
+file(GLOB SOURCES "src/*.cpp")
+
+add_library(rokid_xr_core SHARED ${SOURCES} ${HEADERS})
 
 # 将头文件目录添加到包含路径中
 target_include_directories(rokid_xr_core PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/include/utils
 )
 
 add_executable(main main.cpp) # 添加执行程序

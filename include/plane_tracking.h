@@ -1,15 +1,15 @@
+#ifndef __PLANE_TRACKING__H__
+#define __PLANE_TRACKING__H__
+
 #include <iostream>
 #include <regex>
 #include <sstream>
 #include <iomanip>
 #include <cstddef>
 #include <iostream>
-#include "../include/trackable_id.h"
-#include "../include/plane_manager.h"
-#include "../include/plane_changes.h"
+#include "trackable_id.h"
+#include "plane_manager.h"
 
-#ifndef __PLANE_TRACKING__H__
-#define __PLANE_TRACKING__H__
 extern "C"
 {
     /**

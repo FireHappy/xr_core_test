@@ -1,19 +1,20 @@
-#include "plane_tracking.h"
+#include "../include/plane_tracking.h"
 #include "../include/unity_math.h"
+#include "../include/unity_debug.h"
 
 void startTracking()
 {
-    std::cout << "startTracking";
+    LogMessage("start tracking");
 }
 
 void stopTracking()
 {
-    std::cout << "stopTracking";
+    LogMessage("stop tracking");
 }
 
 void destroy()
 {
-    std::cout << "destroy";
+    LogMessage("destroy plane tracking");
 }
 
 void *acquireChanges(
@@ -27,8 +28,6 @@ void *acquireChanges(
 
 void releaseChanges(void *changes)
 {
-    PlaneChanges *planeChanges = static_cast<PlaneChanges *>(changes);
-    planeChanges->release();
 }
 
 PlaneDetectionMode getRequestedPlaneDetectionMode()
@@ -38,13 +37,13 @@ PlaneDetectionMode getRequestedPlaneDetectionMode()
 
 void setRequestedPlaneDetectionMode(PlaneDetectionMode &mode)
 {
-    std::cout << "setPlaneDetectionMode:";
+    LogMessage("setPlaneDetectionMode");
 }
 
 static ARPlane arPlane;
 void *acquireBoundary(
     TrackableId trackableId,
-    int numPoints)
+    int &numPoints)
 {
     arPlane.trackableId = trackableId;
     numPoints = 4;

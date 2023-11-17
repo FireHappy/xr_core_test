@@ -1,9 +1,11 @@
-#include "unity_math.h"
-#include "trackable_id.h"
-#include <vector>
+
 
 #ifndef __ARPLANE__H__
 #define __ARPLANE__H__
+
+#include "unity_math.h"
+#include "trackable_id.h"
+#include <vector>
 
 struct ARPlane
 {

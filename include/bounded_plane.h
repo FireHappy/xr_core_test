@@ -1,11 +1,11 @@
-#include "plane_tracking_enum.h"
-#include "unity_math.h"
-#include "trackable_id.h"
+
 
 #ifndef __BOUNDED_PLANE__H__
 #define __BOUNDED_PLANE__H__
 
-// Struct for BoundedPlane
+#include "plane_tracking_enum.h"
+#include "unity_math.h"
+#include "trackable_id.h"
 struct BoundedPlane
 {
   static const BoundedPlane Default;

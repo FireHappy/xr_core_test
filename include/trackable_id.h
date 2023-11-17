@@ -1,12 +1,11 @@
+#ifndef __TRACKABLEID__H__
+#define __TRACKABLEID__H__
 
 #include <iostream>
 #include <regex>
 #include <sstream>
 #include <iomanip>
 #include "plane_tracking_enum.h"
-
-#ifndef __TRACKABLEID__H__
-#define __TRACKABLEID__H__
 struct TrackableId
 {
     uint64_t subId1;
@@ -53,7 +52,5 @@ struct TrackableId
         return !(*this == other);
     }
 };
-
-const TrackableId TrackableId::invalidId = TrackableId(0, 0);
 
 #endif //!__TRACKABLEID__H__
