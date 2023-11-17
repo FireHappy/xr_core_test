@@ -1,4 +1,5 @@
 #include "../include/plane_tracking.h"
+#include "../include/plane_changes.h"
 #include <string>
 
 void startTracking()
@@ -22,7 +23,7 @@ void *acquireChanges(
     void *removedPtr, int removedLength,
     int elementSize)
 {
-    return NULL;
+    return nullptr;
 }
 
 void releaseChanges(void *changes)

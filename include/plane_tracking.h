@@ -1,12 +1,6 @@
 #ifndef __PLANE_TRACKING__H__
 #define __PLANE_TRACKING__H__
 
-#include <iostream>
-#include <regex>
-#include <sstream>
-#include <iomanip>
-#include <cstddef>
-#include <iostream>
 #include "trackable_id.h"
 #include "plane_manager.h"
 #include "unity_math.h"

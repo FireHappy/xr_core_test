@@ -3,16 +3,18 @@
 #ifndef __PLANE_CHANGES__H__
 #define __PLANE_CHANGES__H__
 
-#include <iostream>
-#include <regex>
-#include <sstream>
-#include <iomanip>
 #include "bounded_plane.h"
 #include "unity_math.h"
 
 class PlaneChanges
 {
 public:
+    static PlaneChanges &getInstance()
+    {
+        static PlaneChanges instance;
+        return instance;
+    }
+
     BoundedPlane *getAddBoundedPlane();
 
     BoundedPlane *getRemoveBoundedPlane();
@@ -23,7 +25,15 @@ public:
 
     void release();
 
+    void *getNativePtr()
+    {
+        return &getInstance();
+    }
+
 private:
+    PlaneChanges() {}
+    ~PlaneChanges() {}
+
     BoundedPlane *addArray;
     BoundedPlane *removeArray;
     BoundedPlane *updateArray;
