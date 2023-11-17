@@ -5,7 +5,8 @@
 /// or vertical).
 /// </summary>
 /// <seealso cref="BoundedPlane.alignment"/>
-enum class PlaneAlignment {
+enum class PlaneAlignment
+{
   /// <summary>
   /// No alignment.
   /// </summary>
@@ -35,31 +36,36 @@ enum class PlaneAlignment {
 };
 
 // Enum for TrackingState
-enum class TrackingState {
+enum class TrackingState
+{
   None,
   Limited,
   Tracking,
 };
 
-enum class PlaneDetectionMode {
+enum class PlaneDetectionMode
+{
   /// <summary>
   /// Plane detection is disabled.
   /// </summary>s
   None = 0,
 
   /// <summary>
-  /// Plane detection will only detect horizontal planes.
+  /// Plane detection wille only detect horizontal plans.
   /// </summary>
   Horizontal = 1 << 0,
 
   /// <summary>
   /// Plane detection will only detect vertical planes.
   /// </summary>
-  Vertical = 1 << 1
+  Vertical = 1 << 1,
+
+  All = 1 << 2
 };
 
 // Enum for PlaneClassification
-enum class PlaneClassification {
+enum class PlaneClassification
+{
   None,
   Wall,
   Floor,

@@ -1,8 +1,4 @@
 #include "../include/plane_tracking.h"
-#include "../include/unity_math.h"
-#include "../include/unity_debug.h"
-#include "../include/ar_plane.h"
-#include "../include/plane_changes.h"
 #include <string>
 
 void startTracking()
@@ -45,25 +41,23 @@ void setRequestedPlaneDetectionMode(PlaneDetectionMode &mode)
     LogMessage("setPlaneDetectionMode");
 }
 
-static ARPlane _arPlane;
 void *acquireBoundary(
     TrackableId trackableId,
     int &numPoints)
 {
-    // _arPlane.trackableId = trackableId;
     numPoints = 4;
-    for (size_t i = 0; i < numPoints; i++)
-    {
-        /* code */
-        _arPlane.boundary[i] = Vector2(-0.5f, 0.5f);
-    }
-    _arPlane.trackableId = trackableId;
-
+    static ARPlane arPlane;
+    arPlane.trackableId = trackableId;
+    arPlane.boundary.clear();
+    arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
+    arPlane.boundary.push_back(Vector2(0.5f, 0.5f));
+    arPlane.boundary.push_back(Vector2(-0.5f, -0.5f));
+    arPlane.boundary.push_back(Vector2(0.5f, -0.5f));
     std::ostringstream oss;
-    oss << "acquireBoundary: " << _arPlane.getNativePtr() << " result: "
-        << _arPlane.boundary[0].x << " boundary.address " << _arPlane.boundary << " trackableId: " << _arPlane.trackableId.subId1 << std::endl;
+    oss << "acquireBoundary: " << arPlane.getNativePtr() << " result: "
+        << arPlane.boundary[0].x << " boundary.address " << &arPlane.boundary << " trackableId: " << arPlane.trackableId.subId1 << std::endl;
     LogMessage(oss.str().c_str());
-    return &_arPlane;
+    return arPlane.getNativePtr();
 }
 
 bool tryCopyBoundary(
@@ -72,13 +66,12 @@ bool tryCopyBoundary(
     std::ostringstream oss;
     ARPlane *arPlane = static_cast<ARPlane *>(plane);
     oss << "tryCopyBoundary: " << arPlane << " result: "
-        << arPlane->boundary[0].x << " boundary.address " << arPlane->boundary << " trackableId: " << arPlane->trackableId.subId1 << std::endl;
+        << arPlane->boundary[0].x << " boundary.address " << &(arPlane->boundary) << " trackableId: " << arPlane->trackableId.subId1 << std::endl;
     LogMessage(oss.str().c_str());
     Vector2 *array = static_cast<Vector2 *>(boundaryOut);
-    for (size_t i = 0; i < 4; i++)
+    for (size_t i = 0; i < arPlane->boundary.size(); i++)
     {
         array[i] = arPlane->boundary[i];
     }
-    std::cout << "hello world " << boundaryOut << "== " << arPlane->boundary << std::endl;
     return true;
 }

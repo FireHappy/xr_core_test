@@ -52,6 +52,4 @@ struct BoundedPlane
         classification(classification) {}
 };
 
-const BoundedPlane BoundedPlane::Default;
-
 #endif //!__BOUNDED_PLANE__H__

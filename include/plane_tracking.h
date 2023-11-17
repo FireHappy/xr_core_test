@@ -9,6 +9,10 @@
 #include <iostream>
 #include "trackable_id.h"
 #include "plane_manager.h"
+#include "unity_math.h"
+#include "unity_debug.h"
+#include "ar_plane.h"
+#include "plane_changes.h"
 
 extern "C"
 {
