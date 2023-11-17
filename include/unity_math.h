@@ -1,5 +1,5 @@
-#ifndef __ROKID_UNITY_MATH__H__
-#define __ROKID_UNITY_MATH__H__
+#ifndef __UNITY_MATH__H__
+#define __UNITY_MATH__H__
 
 #include <iostream>
 #include <cmath>

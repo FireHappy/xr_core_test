@@ -1,3 +1,6 @@
+#ifndef __UNITY_DEBUG__H__
+#define __UNITY_DEBUG__H__
+
 #include <iostream>
 #include <string>
 
@@ -14,3 +17,4 @@ extern "C"
     // Function to log a message from C++
     void LogMessage(const char *message);
 }
+#endif
