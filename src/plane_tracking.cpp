@@ -45,6 +45,7 @@ void releaseChanges(void *changes)
 {
     PlaneChanges *planeChanges = static_cast<PlaneChanges *>(changes);
     planeChanges->release();
+    isFirstGet = true;
 }
 
 PlaneDetectionMode getRequestedPlaneDetectionMode()

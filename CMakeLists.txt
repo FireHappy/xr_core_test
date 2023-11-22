@@ -26,4 +26,10 @@ add_executable(main main.cpp) # 添加执行程序
 target_link_libraries(main PRIVATE rokid_xr_core)
 
 set_target_properties(rokid_xr_core PROPERTIES OUTPUT_NAME "rokid_xr_core")
-set_target_properties(rokid_xr_core PROPERTIES LIBRARY_OUTPUT_DIRECTORY "/Users/chenlin/projects/UnityProjects/ARCoreDemo/Assets/Plugins/MacOS")
+set_target_properties(rokid_xr_core PROPERTIES LIBRARY_OUTPUT_DIRECTORY "/Users/chenlin/projects/UnityProjects/ARCoreDemo/Assets/Plugins/Android")
+
+# 设置共享库的输出目录，并显式指定输出文件的扩展名为 .so
+set_target_properties(rokid_xr_core PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    SUFFIX ".so"
+)
