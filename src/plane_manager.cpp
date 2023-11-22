@@ -21,6 +21,6 @@ void PlaneManager::addOrUpdatePlane(ARPlane &plane)
     }
     else
     {
-        planeList.push_front(plane);
+        planeList.push_back(plane);
     }
 }

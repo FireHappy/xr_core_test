@@ -23,17 +23,17 @@ void destroy()
 bool static isFirstGet = true;
 
 void *acquireChanges(
-    void *addedPtr, int &addedLength,
-    void *updatedPtr, int &updatedLength,
-    void *removedPtr, int &removedLength,
+    void *&addedPtr, int &addedLength,
+    void *&updatedPtr, int &updatedLength,
+    void *&removedPtr, int &removedLength,
     int &elementSize)
 {
     PlaneChanges *changes = new PlaneChanges(isFirstGet);
-    std::cout << addedPtr << " " << changes->addedArray << std::endl;
+    addedPtr = changes->addedArray;
     updatedPtr = changes->updateArray;
     removedPtr = changes->removedArray;
+
     addedLength = changes->addedLength;
-    std::cout << addedPtr << " " << changes->addedArray << std::endl;
     updatedLength = changes->updatedLength;
     removedLength = changes->removedLength;
     elementSize = sizeof(BoundedPlane);

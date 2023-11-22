@@ -27,7 +27,6 @@ PlaneChanges::PlaneChanges(bool firstInit)
         for (size_t i = 0; i < 5; i++)
         {
             BoundedPlane boundedPlane = BoundedPlane(TrackableId(i, i + 1), TrackableId(0, 0), Pose(), Vector2(), Vector2(), PlaneAlignment::HorizontalUp, TrackingState::Tracking, nullptr, PlaneClassification::Floor);
-            addedArray[i] = boundedPlane;
             updateArray[i] = boundedPlane;
         }
     }

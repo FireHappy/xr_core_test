@@ -32,9 +32,9 @@ extern "C"
     /// @param elementSize
     /// @return
     void *acquireChanges(
-        void *addedPtr, int &addedLength,
-        void *updatedPtr, int &updatedLength,
-        void *removedPtr, int &removedLength,
+        void *&addedPtr, int &addedLength,
+        void *&updatedPtr, int &updatedLength,
+        void *&removedPtr, int &removedLength,
         int &elementSize);
     /**
      * @brief release changes

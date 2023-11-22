@@ -22,6 +22,10 @@ void testAddOrUpdate()
     std::cout << "plane: " << plane->boundary[0].x << " " << plane->boundary[0].y << std::endl;
 }
 
+void ptrTest(void *inPtr)
+{
+}
+
 int main(int argc, const char **argv)
 {
     // startTracking();
@@ -49,16 +53,13 @@ int main(int argc, const char **argv)
     void *addPtr;
     void *removePtr;
     void *updatePtr;
-    std::cout << addPtr << std::endl;
     int addLength, removeLength, updateLength, elementSize;
     acquireChanges(addPtr, addLength, updatePtr, updateLength, removePtr, removeLength, elementSize);
-    std::cout << addPtr << std::endl;
-
     BoundedPlane *addPlane = static_cast<BoundedPlane *>(addPtr);
+    std::cout << "addPtr: " << addPtr << std::endl;
     for (size_t i = 0; i < addLength; i++)
     {
         std::cout << addPlane[i].trackableId.ToString() << std::endl;
     }
-
     return 0;
 }
