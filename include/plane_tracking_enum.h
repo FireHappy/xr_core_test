@@ -1,14 +1,14 @@
 #ifndef __ROKID_XR_CORE_ENUM__H__
 #define __ROKID_XR_CORE_ENUM__H__
 // <summary>
-/// Represents the alignment of a plane (for example, whether it is horizontal
+/// Represents the m_Alignment of a plane (for example, whether it is horizontal
 /// or vertical).
 /// </summary>
-/// <seealso cref="BoundedPlane.alignment"/>
+/// <seealso cref="BoundedPlane.m_Alignment"/>
 enum class PlaneAlignment
 {
   /// <summary>
-  /// No alignment.
+  /// No m_Alignment.
   /// </summary>
   None = 0,
 

@@ -17,7 +17,7 @@ void PlaneManager::addOrUpdatePlane(ARPlane &plane)
     ARPlane *planePtr = getPlaneByTrackableId(plane.trackableId);
     if (planePtr != nullptr)
     {
-        // TODO Update Plane
+        planePtr->boundary = plane.boundary;
     }
     else
     {

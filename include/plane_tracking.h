@@ -32,10 +32,10 @@ extern "C"
     /// @param elementSize
     /// @return
     void *acquireChanges(
-        void *addedPtr, int addedLength,
-        void *updatedPtr, int updatedLength,
-        void *removedPtr, int removedLength,
-        int elementSize);
+        void *addedPtr, int &addedLength,
+        void *updatedPtr, int &updatedLength,
+        void *removedPtr, int &removedLength,
+        int &elementSize);
     /**
      * @brief release changes
      * @param changes
@@ -69,5 +69,7 @@ extern "C"
     bool tryCopyBoundary(
         void *plane, void *boundaryOut);
 }
+
+void testUpdatePlane();
 
 #endif //!__PLANE_TRACKING__H__

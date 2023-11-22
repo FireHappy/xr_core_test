@@ -21,14 +21,14 @@ struct BoundedPlane
   PlaneClassification classification;
 
   BoundedPlane()
-      : trackableId(0),
-        subsumedById(0),
+      : trackableId(0, 0),
+        subsumedById(0, 0),
         pose(),
         center(),
         size(),
         alignment(PlaneAlignment::None),
         trackingState(TrackingState::None),
-        nativePtr(nullptr),
+        nativePtr(this),
         classification(PlaneClassification::None) {}
 
   BoundedPlane(
@@ -48,7 +48,7 @@ struct BoundedPlane
         size(size),
         alignment(alignment),
         trackingState(trackingState),
-        nativePtr(nativePtr),
+        nativePtr(this),
         classification(classification) {}
 };
 

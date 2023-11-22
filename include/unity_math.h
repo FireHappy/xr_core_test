@@ -46,11 +46,11 @@ class Plane
 {
 public:
     Vector3 normal;
-    Vector3 center;
+    Vector3 m_Center;
 
-    Plane(const Vector3 &_normal, const Vector3 &_center) : normal(_normal), center(_center) {}
+    Plane(const Vector3 &_normal, const Vector3 &_center) : normal(_normal), m_Center(_center) {}
 
-    Plane(const Vector3 &_normal, const Vector2 &_center) : normal(_normal), center(_center.x, _center.y, 0) {}
+    Plane(const Vector3 &_normal, const Vector2 &_center) : normal(_normal), m_Center(_center.x, _center.y, 0) {}
 };
 
 #endif //!__ROKID_UNITY_MATH__H__

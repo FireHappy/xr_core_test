@@ -4,39 +4,34 @@
 #define __PLANE_CHANGES__H__
 
 #include "bounded_plane.h"
+#include "plane_tracking_enum.h"
+#include "trackable_id.h"
 #include "unity_math.h"
 
 class PlaneChanges
 {
 public:
-    static PlaneChanges &getInstance()
-    {
-        static PlaneChanges instance;
-        return instance;
-    }
-
-    BoundedPlane *getAddBoundedPlane();
-
-    BoundedPlane *getRemoveBoundedPlane();
-
-    BoundedPlane *getUpdateBoundedPlane();
-
-    void initialize();
-
-    void release();
+    PlaneChanges(bool firstInit);
 
     void *getNativePtr()
     {
-        return &getInstance();
+        return this;
     }
 
-private:
-    PlaneChanges() {}
-    ~PlaneChanges() {}
+    void release()
+    {
+        delete[] addedArray;
+        delete[] removedArray;
+        delete[] updateArray;
+    }
 
-    BoundedPlane *addArray;
-    BoundedPlane *removeArray;
+    BoundedPlane *addedArray;
+    BoundedPlane *removedArray;
     BoundedPlane *updateArray;
+
+    int addedLength;
+    int removedLength;
+    int updatedLength;
 };
 
 #endif //!__PLANE_CHANGES__H__
