@@ -4,9 +4,12 @@
 #include "../include/bounded_plane.h"
 #include <string>
 
+bool static isFirstGet = true;
+
 void startTracking()
 {
-    LogMessage("start tracking1");
+    isFirstGet = true;
+    LogMessage("start tracking");
     testUpdatePlane();
 }
 
@@ -19,8 +22,6 @@ void destroy()
 {
     LogMessage("destroy plane tracking");
 }
-
-bool static isFirstGet = true;
 
 void *acquireChanges(
     void *&addedPtr, int &addedLength,
@@ -45,7 +46,6 @@ void releaseChanges(void *changes)
 {
     PlaneChanges *planeChanges = static_cast<PlaneChanges *>(changes);
     planeChanges->release();
-    isFirstGet = true;
 }
 
 PlaneDetectionMode getRequestedPlaneDetectionMode()
@@ -80,8 +80,8 @@ bool tryCopyBoundary(
 {
     if (plane != nullptr)
     {
-        std::ostringstream oss;
         ARPlane *arPlane = static_cast<ARPlane *>(plane);
+        std::ostringstream oss;
         oss << "tryCopyBoundary: " << arPlane << " result: "
             << arPlane->boundary[0].x << " boundary.address " << &(arPlane->boundary) << " trackableId: " << arPlane->trackableId.subId1 << std::endl;
         LogMessage(oss.str().c_str());
@@ -107,10 +107,10 @@ void testUpdatePlane()
         ARPlane arPlane;
         arPlane.trackableId = TrackableId(i, i + 1);
         arPlane.boundary.clear();
-        arPlane.boundary.push_back(Vector2(-0.5f + i, 0.5f + i));
-        arPlane.boundary.push_back(Vector2(0.5f + i, 0.5f + i));
-        arPlane.boundary.push_back(Vector2(-0.5f + i, -0.5f + i));
-        arPlane.boundary.push_back(Vector2(0.5f + i, -0.5f + i));
+        arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
+        arPlane.boundary.push_back(Vector2(0.5f, 0.5f));
+        arPlane.boundary.push_back(Vector2(-0.5f, -0.5f));
+        arPlane.boundary.push_back(Vector2(0.5f, -0.5f));
         PlaneManager::getInstance().addOrUpdatePlane(arPlane);
     }
 }
