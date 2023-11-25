@@ -84,12 +84,13 @@ bool tryCopyBoundary(
         std::ostringstream oss;
         oss << "tryCopyBoundary: " << arPlane << " result: "
             << arPlane->boundary[0].x << " boundary.address " << &(arPlane->boundary) << " trackableId: " << arPlane->trackableId.subId1 << std::endl;
-        LogMessage(oss.str().c_str());
         Vector2 *array = static_cast<Vector2 *>(boundaryOut);
         for (size_t i = 0; i < arPlane->boundary.size(); i++)
         {
+            oss << "boundray:" << arPlane->boundary[i].x << " " << arPlane->boundary[i].y << std::endl;
             array[i] = arPlane->boundary[i];
         }
+        LogMessage(oss.str().c_str());
         return true;
     }
     return false;
@@ -109,8 +110,8 @@ void testUpdatePlane()
         arPlane.boundary.clear();
         arPlane.boundary.push_back(Vector2(-0.5f, 0.5f));
         arPlane.boundary.push_back(Vector2(0.5f, 0.5f));
-        arPlane.boundary.push_back(Vector2(-0.5f, -0.5f));
         arPlane.boundary.push_back(Vector2(0.5f, -0.5f));
+        arPlane.boundary.push_back(Vector2(-0.5f, -0.5f));
         PlaneManager::getInstance().addOrUpdatePlane(arPlane);
     }
 }
